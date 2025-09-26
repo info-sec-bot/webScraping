@@ -24,3 +24,19 @@ i = 1
 for text in allhTags:
     print(f"This is the h{i} tag {text.get_text()}")
     i += 1
+print("---------------------------------------------")
+# Find descendants that are children
+html = urlopen("http://www.pythonscraping.com/pages/page3.html")
+bsObj = BeautifulSoup(html, "html.parser")
+for child in bsObj.find("table", {"id":"giftList"}).children:
+    print(child)
+# Find next siblings
+html = urlopen("http://www.pythonscraping.com/pages/page3.html")
+bsObj = BeautifulSoup(html, "html.parser")
+for sibling in bsObj.find("table", {"id":"giftList"}).tr.next_siblings:
+    print(sibling)
+
+# Print out price of object in image at file location (using previous siblings)
+html = urlopen("http://www.pythonscraping.com/pages/page3.html")
+bsObj = BeautifulSoup(html, "html.parser")
+print(bsObj.find("img", {"src":"../img/gifts/img1.jpg"}).parent.previous_sibling.get_text())
