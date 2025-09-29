@@ -28,7 +28,6 @@ def getLinks(articleUrl):
 # Get a list of links from url
 try:
     links = getLinks(url)
-    print("Press 'q' to quit")
     while len(links) > 0:
         # Choose random link from page
         newArticle = links[random.randint(0,len(links)-1)].attrs['href']
